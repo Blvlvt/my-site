@@ -7,39 +7,40 @@
 </head>
 <body>
 <div class="container">
-    <input class="x" type="number" placeholder="На пример 200">
-    <span>:</span>
-    <input class="y" type="number" placeholder="На пример 40">
 
 
-    <input class="color" type="color">
-    <button class="button btn">Color</button>
-    <form class="formRng">
-        <p id="one"></p>
-        <input type="range" id="r1" oninput="fun1()" min="0" max="200" step="1">
-        <input type="range" id="r2" oninput="fun2()" min="0" max="200" step="1">
-        <p id="two"></p>
-    </form>
+        <div class="ground">
+            <div class="ball" id="ball">
 
-    <div class="ground">
-        <div class="ball" id="ball">
-
+            </div>
         </div>
-    </div>
+
+    <div class="lol"><input type="checkbox" class="check"> <span><sup>*</sup> Режим свободного ведения (Вы можете водить круг куда вам хочется )</span> <br>    <input class="x" type="number" placeholder="На пример 200">
+        <span>:</span>
+        <input class="y" type="number" placeholder="На пример 40">
 
 
-    <form action="" class="form">
-    <input class="colorGR color1" type="color">
-    <input class="colorGR color2" type="color">
+        <input class="color" type="color">
+        <button class="button btn">Color</button>
+        <form class="formRng">
+            <p id="one"></p>
+            <input type="range" id="r1" oninput="fun1()" min="0" max="200" step="1">
+            <input type="range" id="r2" oninput="fun2()" min="0" max="200" step="1">
+            <p id="two"></p>
+        </form>
+        <hr>
+        <form action="" class="form">
+            <input class="colorGR color1" type="color">
+            <input class="colorGR color2" type="color">
             <template id="template">
                 <input type="color" class="input">
             </template>
-    </form>
+        </form>
 
-    <button class="addColorGR" value=""><img src="icons8-ios-50.png" alt=""></button>
-    <button class="button btnGradient">ColorGradient</button>
-    <input type="range" id="r3" oninput="fun3()" min="0" max="50" step="1">
-    <span id="tree"></span>
+        <button class="addColorGR" value=""><img src="icons8-ios-50.png" alt=""></button>
+        <button class="button btnGradient">ColorGradient</button>
+        <input type="range" id="r3" oninput="fun3()" min="0" max="50" step="1">
+        <span id="tree"></span></div>
 
 </div>
 

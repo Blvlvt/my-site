@@ -2,7 +2,8 @@ const inpX = document.querySelector('.x'),
     inpY = document.querySelector('.y'),
     ball = document.querySelector('.ball');
 ball.addEventListener('click', function () {
-    this.style.left = inpX.value + 'px';
+    ball.style.transitionProperty = 'left,top,background-color';
+    this.style.left = inpX.value +'px';
     this.style.top  = inpY.value + 'px';
 });
 
@@ -54,7 +55,7 @@ btnAddColorGR.addEventListener('click', function(evt) {
 function fun1() {
     let rng=document.getElementById('r1'); //rng - это Input
     let p=document.getElementById('one'); // p - абзац
-    p.innerHTML=rng.value;
+    p.innerHTML=rng.value + 'px';
 
     ball.style.width = rng.value + 'px';
 }
@@ -62,7 +63,7 @@ function fun1() {
 function fun2() {
     let rng=document.getElementById('r2'); //rng - это Input
     let p=document.getElementById('two'); // p - абзац
-    p.innerHTML=rng.value;
+    p.innerHTML=rng.value + 'px';
 
     ball.style.height = rng.value + 'px';
 }
@@ -70,10 +71,60 @@ function fun2() {
 function fun3() {
     let rng=document.getElementById('r3'); //rng - это Input
     let p=document.getElementById('tree'); // p - абзац
-    p.innerHTML=rng.value;
+    p.innerHTML=rng.value + '%';
 
     ball.style.borderRadius = rng.value + '%';
 }
+
+let check = document.querySelector('.check');
+
+check.addEventListener('change', function (  ) {
+
+
+        ball.onmousedown = function(event) { // (1) отследить нажатие
+            if (check.checked === true) {
+            ball.style.transitionProperty = 'background-color';
+            // (2) подготовить к перемещению:
+            // разместить поверх остального содержимого и в абсолютных координатах
+            ball.style.position = 'absolute';
+            ball.style.zIndex = 1000;
+            // переместим в body, чтобы мяч был точно не внутри position:relative
+            document.body.append(ball);
+            // и установим абсолютно спозиционированный мяч под курсор
+
+            moveAt(event.pageX, event.pageY);
+
+            // передвинуть мяч под координаты курсора
+            // и сдвинуть на половину ширины/высоты для центрирования
+            function moveAt(pageX, pageY) {
+                ball.style.left = pageX - ball.offsetWidth / 2 + 'px';
+                ball.style.top = pageY - ball.offsetHeight / 2 + 'px';
+            }
+
+            function onMouseMove(event) {
+                moveAt(event.pageX, event.pageY);
+            }
+
+            // (3) перемещать по экрану
+            document.addEventListener('mousemove', onMouseMove);
+
+            // (4) положить мяч, удалить более ненужные обработчики событий
+            ball.onmouseup = function() {
+                document.removeEventListener('mousemove', onMouseMove);
+                ball.onmouseup = null;
+                ball.ondragstart = function() {
+                    return false;
+                };
+            };
+         };
+    }
+
+
+});
+
+
+
+
 
 
 
